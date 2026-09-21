@@ -1,3 +1,19 @@
+// TLDR
+// generating seed
+//   - convert text to ascii and use it as code for meth
+
+// LCG
+// Ctrl + C, Ctrl + V from https://gist.github.com/developersharif/948694db21e1685365152d5c9d8ae53b
+// X[n+1] = (aX[n] + c) % m
+
+// Seg
+// cal distance, and devide it into segment, each with 10px
+
+// Lerp
+// Do lerp thing
+
+// and draw... i guess?
+// every draw change the seed abit
 
 function drawSketchBorders() {
   const buttons = document.querySelectorAll('.sketch-btn');
@@ -49,12 +65,11 @@ function drawSketchBorders() {
 
       for (let i = 1; i <= segments; i++) {
         const t = i / segments;
-        // find the straight path point w/ linear interlop? interlope idk what am I doing
+        // Lerp
         let px = x1 + (x2 - x1) * t;
         let py = y1 + (y2 - y1) * t;
-
-        // Skip applying wobble to the absolute final endpoint so corners meet up
-        if (i < segments) {
+        
+        if (i < segments) {// skip at endpoint
           const wobble = 1.5;
           px += (seededRandom() - 0.5) * wobble;
           py += (seededRandom() - 0.5) * wobble;
@@ -67,7 +82,7 @@ function drawSketchBorders() {
 
     // draw one full
     function drawPass() {
-      const padding = 3; // Keep lines slightly inside canvas edge
+      const padding = 3; // keep lines slightly inside canvas edge
       const offset = () => (seededRandom() - 0.5) * 3; 
 
       const tl = { x: padding + offset(), y: padding + offset() };
@@ -82,7 +97,6 @@ function drawSketchBorders() {
       drawWobblyLine(bl.x, bl.y, tl.x, tl.y);
     }
 
-    // Run two separate passes to simulate a designer drawing over the line twice
     drawPass();
     drawPass();
   });
