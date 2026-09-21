@@ -7,7 +7,7 @@
 // X[n+1] = (aX[n] + c) % m
 
 // Seg
-// cal distance, and devide it into segment, each with 10px
+// cal distance, and divide it into segment, each with 10px
 
 // Lerp
 // Do lerp thing
