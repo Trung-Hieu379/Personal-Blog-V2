@@ -99,6 +99,7 @@ function drawSketchBorders() {
 
     drawPass();
     drawPass();
+    drawPass();
   });
 }
 
